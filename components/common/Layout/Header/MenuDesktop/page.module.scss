@@ -1,5 +1,14 @@
 .li {
   &:hover {
+    &::after {
+      content: "";
+      width: 200px;
+      height: 50px;
+      left: -40px;
+      position: absolute;
+      bottom: -40px;
+      background-color: transparent;
+    }
     .subMenu {
       opacity: 1;
       max-height: 100vh;

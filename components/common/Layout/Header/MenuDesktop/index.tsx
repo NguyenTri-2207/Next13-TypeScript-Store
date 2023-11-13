@@ -23,13 +23,17 @@ const MenuDesktop: React.FC<{ dataMenu: EnumServiceItem[] }> = ({
   const [hovering, setHovering] = useState<number | null>(null);
   const [popoverLeft, setPopoverLeft] = useState<number | null>(null);
   const [popoverHight, setPopoverHight] = useState<number | null>(null);
+  const calculatedWidth =
+    hovering === 1 ? 600 : hovering === 2 ? 500 : hovering === 3 ? 450 : 600; //
   const calculatedHeight =
     hovering === 1 ? 600 : hovering === 2 ? 500 : hovering === 3 ? 450 : 600; //
-  console.log(calculatedHeight);
 
   return (
     <>
-      <nav className="hidden lg:block" onMouseEnter={() => setHovering(null)}>
+      <nav
+        className="hidden lg:block fixed w-full z-50 bg-white"
+        onMouseEnter={() => setHovering(null)}
+      >
         <div className="container ">
           <div className="grid grid-cols-12   items-center justify-between py-4 gap-x-2 ">
             <div className="lg:col-span-2 w-[200px]">
@@ -47,9 +51,9 @@ const MenuDesktop: React.FC<{ dataMenu: EnumServiceItem[] }> = ({
                 return (
                   <li
                     key={index}
-                    className={`${item.subMenu && styles.li}  p-4  relative  ${
-                      hovering == item.id && " "
-                    } `}
+                    className={`${
+                      item.subMenu && styles.li
+                    }  px-4  relative z-50 ${hovering == item.id && " "} `}
                     onMouseLeave={() => {
                       setHovering(null);
                     }}
@@ -71,16 +75,17 @@ const MenuDesktop: React.FC<{ dataMenu: EnumServiceItem[] }> = ({
                     {dataMenu[index]?.subMenu && (
                       <div
                         style={{
-                          width: calculatedHeight,
+                          width: calculatedWidth,
+                          height: calculatedHeight,
                         }}
-                        className={` bg-white p-4 z-50 left-1/2 -translate-x-1/2  rounded-xl shadow-lg absolute top-14  transition-all duration-300 ${styles.subMenu} `}
+                        className={` bg-white p-4 z-50 left-1/2 -translate-x-1/2  overflow-hidden rounded-xl shadow-lg absolute top-14  transition-all ease-in duration-300 ${styles.subMenu} `}
                       >
                         {dataMenu[index]?.subMenu?.map((item, index) => {
                           return (
                             <div
                               style={{ left: popoverLeft ?? 0 }}
                               key={index}
-                              className="py-3  last:pb-0  justify-center border-b border-gray-400 "
+                              className="py-3 last:pb-0  justify-center border-b last:border-0 border-gray-400 "
                             >
                               <div className="flex  mb-3">
                                 <div>
