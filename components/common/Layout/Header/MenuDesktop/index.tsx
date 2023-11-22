@@ -6,6 +6,7 @@ import { MouseEvent } from "react";
 import styles from "./page.module.scss";
 import { BiChevronRight } from "react-icons/bi";
 import { FaCoffee } from "react-icons/fa";
+import FormLogin from "@/components/molecules/FormLogin";
 interface SubMenu {
   label: string;
   desc?: string;
@@ -59,7 +60,7 @@ const MenuDesktop: React.FC<{ dataMenu: EnumServiceItem[] }> = ({
                     }}
                     onMouseEnter={(event: MouseEvent) => {
                       const target = event.currentTarget as HTMLElement;
-                      console.log(target);
+
                       setHovering(item.subMenu ? item?.id : null);
                       setPopoverLeft(target.offsetLeft + 40);
                     }}
@@ -133,13 +134,7 @@ const MenuDesktop: React.FC<{ dataMenu: EnumServiceItem[] }> = ({
 
                 <BiChevronRight className="group-hover:opacity-20 group-hover:w-5  transition-all duration-200" />
               </Link>
-              <Link
-                href="/lien-he"
-                className="flex items-center bg-white px-4 rounded-full py-1 text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium  text-center"
-              >
-                <span className="mr-1">Sing in</span>
-                <BiChevronRight />
-              </Link>
+              <FormLogin />
             </div>
           </div>
         </div>

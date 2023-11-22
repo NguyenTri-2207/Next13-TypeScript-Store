@@ -13,4 +13,7 @@ module.exports = {
       },
     ],
   },
+  react: {
+    fastRefresh: true,
+  },
 };

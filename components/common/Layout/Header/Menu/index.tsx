@@ -20,7 +20,6 @@ const Menu: React.FC<{ dataMenu: EnumServiceItem[] }> = ({ dataMenu }) => {
   const [show, setShow] = useState<boolean | null>(false);
   const [showSubMenu, setShowSubMenu] = useState<number | null>(null);
 
-  console.log(show);
   return (
     <nav className="block lg:hidden fixed top-0 left-0 z-50 w-full bg-white shadow-md ">
       <div className="container ">
